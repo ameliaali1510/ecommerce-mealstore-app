@@ -3,10 +3,12 @@ require("dotenv").config()
 const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
+const itemRoutes = require("./routes/mealCart")
 
 const app = express()
 app.use(cors())
 app.use(express.json())
+app.use("/mealCart", itemRoutes)
 
 mongoose.connect(process.env.MONGODB_URL)
     .then(() => {
